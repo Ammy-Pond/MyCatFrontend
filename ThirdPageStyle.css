@@ -1,0 +1,19 @@
+
+body{
+    background-color:#f3e9ec;
+    font-family: Comic Sans MS;
+}
+html{
+    background-color: #f3e9ec;
+}
+.form-horizontal{  
+    margin-top: 35%;
+}
+
+img{
+margin-left: 60%;
+height: 100%;
+width: 100%;
+margin-top: 15%;
+object-fit: contain;
+}

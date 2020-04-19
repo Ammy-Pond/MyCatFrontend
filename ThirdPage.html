@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat3</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="ThirdPageStyle.css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row mb-3 h-30">
+            <div class="col-4 themed-grid-col">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend style="margin-bottom: 5%;">Add New Cat</legend>
+
+                        <!-- Text input-->
+                        <div class="control-group">
+                            <label class="control-label" for="full_name">Cat's Name</label>
+                            <div class="controls">
+                                <input id="full_name" name="full_name" placeholder="Enter cat's name"
+                                    class="input-xlarge" type="text"
+                                    style="background-color: #e8f1ee;margin-bottom: 5%;">
+                            </div>
+                        </div>
+
+
+                        <!-- Textarea -->
+                        <div class="control-group">
+                            <label class="control-label" for="Address">Address</label>
+                            <div class="controls">
+                                <textarea id="Address" name="Address"
+                                    style="background-color: #e8f1ee;margin-bottom: 5%;"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- File Button -->
+                        <div class="control-group">
+
+                            <div class="controls">
+                                <button><a href="javascript:changeProfile()"
+                                        style="color: black;text-decoration: none;">Add Photo</a></button>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="control-group">
+                            <label class="control-label" for="submit"></label>
+                            <div class="controls">
+                                <button id="submit" name="submit" class="btn btn-primary"
+                                    style="background-color:#83bdbf">Save</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-4 themed-grid-col">
+
+                <img id="preview"
+                    src="https://images.pexels.com/photos/320014/pexels-photo-320014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    alt="Catty" />
+                <input type="file" id="image" style="display: none;" />
+                <!--<input type="hidden" style="display: none" value="0" name="remove" id="remove">-->
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script>
+                    function changeProfile() {
+                        $('#image').click();
+                    }
+                    $('#image').change(function () {
+                        var imgPath = this.value;
+                        var ext = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                        if (ext == "gif" || ext == "png" || ext == "jpg" || ext == "jpeg")
+                            readURL(this);
+                        else
+                            alert("Please select image file (jpg, jpeg, png).")
+                    });
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.readAsDataURL(input.files[0]);
+                            reader.onload = function (e) {
+                                $('#preview').attr('src', e.target.result);
+                                //              $("#remove").val(0);
+                            };
+                        }
+                    }
+                    function removeImage() {
+                        $('#preview').attr('src', 'noimage.jpg');
+                        //      $("#remove").val(1);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
